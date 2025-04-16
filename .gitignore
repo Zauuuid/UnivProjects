@@ -1,174 +1,92 @@
-# Byte-compiled / optimized / DLL files
-__pycache__/
-*.py[cod]
-*$py.class
+# Question 2 of TM112 MTA :
+# I am asked to answer the first and second sections of question two.
 
-# C extensions
-*.so
 
-# Distribution / packaging
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-share/python-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
+# I will open a file with my name and the format will be a text file (.txt). I will use 'w' to write in it
+file = open("ZayedAbdullahBawzeer.txt", "w")
 
-# PyInstaller
-#  Usually these files are written by a python script from a template
-#  before PyInstaller builds the exe, so as to inject date/other infos into it.
-*.manifest
-*.spec
+# The first thing the file contains is my identity as a student
+file.write("This file was created by student: Zayed Abdullah Bawazeer\n\n")
 
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
+# I added spaces between the code for better readability and easier modification.
 
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.nox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-*.py,cover
-.hypothesis/
-.pytest_cache/
-cover/
 
-# Translations
-*.mo
-*.pot
+# These lines will contain the requirements for the first part of the question
+# I will add at least 3 animals for each type: mammals, birds, and reptiles, and specify their status as Halal or Haram.
+# The mammals section.
+file.write("Ox,Mammal,Halal\n")
+file.write("Panther,Mammal,Not Halal\n")
+file.write("Ram,Mammal,Halal\n")
+file.write("Monkey,Mammal,Not Halal\n")
+file.write("Camel,Mammal,Halal\n")
+file.write("Deer,Mammal,Halal\n")
 
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
+# The Birds section.
+file.write("Parrot,Bird,Halal\n")
+file.write("Falcon,Bird,Not Halal\n")
+file.write("Nightingale,Bird,Halal\n")
+file.write("Dove,Bird,Halal\n")
+file.write("Sparrow,Bird,Halal\n")
+file.write("Crow,Bird,Not Halal\n")
 
-# Flask stuff:
-instance/
-.webassets-cache
+# The Reptiles section.
+file.write("Tortoise,Reptile,Not Halal\n")
+file.write("Lizard,Reptile,Not Halal\n")
+file.write("Chameleon,Reptile,Not Halal\n")
+file.write("Crocodile,Reptile,Not Halal\n")
+file.write("Snake,Reptile,Not Halal\n")
+file.write("Dhab,Reptile,Halal\n")   
+# حديث ابن عمر -رضي الله عنهما- عن النبيّ -صلّى الله عليه وسلّم-: (الضَّبُّ لَسْتُ آكُلُهُ ولا أُحَرِّمُهُ).[٣]
+# لا اعرف هل فعلا الضب حلال ام حرام , انا لا أكله لاكن احضرت الحديث هذا الي ينفي " تحريمه " فقط
 
-# Scrapy stuff:
-.scrapy
 
-# Sphinx documentation
-docs/_build/
+# End of the first part of question two, moving on to the second part.
+file.close()
 
-# PyBuilder
-.pybuilder/
-target/
+# Beginning of the second part of question two: processing, printing, and reading.
+# Opening the file in read mode to process its contentس
+file2 = open("ZayedAbdullahBawzeer.txt", "r")
 
-# Jupyter Notebook
-.ipynb_checkpoints
+# Setting the variables to 0 to initialize and fix their values
+halal = 0
+nothalal = 0
 
-# IPython
-profile_default/
-ipython_config.py
+# This will print the header for the animal classification report, indicating the start of the output.
+print("Animal Classification Report:\n")
+print("[" , "_" * 25, "]")
 
-# pyenv
-#   For a library or package, you might want to ignore these files since the code is
-#   intended to run in multiple environments; otherwise, check them in:
-# .python-version
+# Now, we start looping through each line in the file for further analysis and extraction of data.
+for line in file2:
+    # Checking if the line contains data in the correct format (i.e., it has a comma separating values).
+    if line.find(",") != -1:
+        # Stripping any extra spaces from the line to ensure clean and consistent data handling.
+        line = line.strip()
+        
+        # Splitting the line into its individual components: the animal name, category, and halal status.
+        values = line.split(",")
 
-# pipenv
-#   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
-#   However, in case of collaboration, if having platform-specific dependencies or dependencies
-#   having no cross-platform support, pipenv may install dependencies that don't work, or not
-#   install all needed dependencies.
-#Pipfile.lock
+        # Verifying that the line contains exactly three parts: animal name, category, and halal status.
+        if len(values) == 3:
+            animal = values[0]  # Storing the animal's name.
+            typee = values[1]   # Storing the category (Mammal, Bird, Reptile, etc.).
+            status = values[2]  # Storing the halal status (Halal / Not Halal).
 
-# UV
-#   Similar to Pipfile.lock, it is generally recommended to include uv.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
-#uv.lock
+            # Displaying the information for the current animal to provide a clean and structured output.
+            print("Animal: " + animal)
+            print("Category: " + typee)
+            print("Halal Status: " + status)
+            print("[" , "_" * 25, "]")
 
-# poetry
-#   Similar to Pipfile.lock, it is generally recommended to include poetry.lock in version control.
-#   This is especially recommended for binary packages to ensure reproducibility, and is more
-#   commonly ignored for libraries.
-#   https://python-poetry.org/docs/basic-usage/#commit-your-poetrylock-file-to-version-control
-#poetry.lock
+            # Depending on the halal status, incrementing the corresponding counter for halal or non-halal animals.
+            if status == "Halal":
+                halal += 1  # Incrementing the halal count.
+            else:
+                nothalal += 1  # Incrementing the non-halal count.
 
-# pdm
-#   Similar to Pipfile.lock, it is generally recommended to include pdm.lock in version control.
-#pdm.lock
-#   pdm stores project-wide configurations in .pdm.toml, but it is recommended to not include it
-#   in version control.
-#   https://pdm.fming.dev/latest/usage/project/#working-with-version-control
-.pdm.toml
-.pdm-python
-.pdm-build/
+# After processing all the lines, we close the file to free up resources and avoid any issues.
+file2.close()
 
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow and github.com/pdm-project/pdm
-__pypackages__/
-
-# Celery stuff
-celerybeat-schedule
-celerybeat.pid
-
-# SageMath parsed files
-*.sage.py
-
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site
-
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Pyre type checker
-.pyre/
-
-# pytype static type analyzer
-.pytype/
-
-# Cython debug symbols
-cython_debug/
-
-# PyCharm
-#  JetBrains specific template is maintained in a separate JetBrains.gitignore that can
-#  be found at https://github.com/github/gitignore/blob/main/Global/JetBrains.gitignore
-#  and can be added to the global gitignore or merged into this file.  For a more nuclear
-#  option (not recommended) you can uncomment the following to ignore the entire idea folder.
-#.idea/
-
-# Ruff stuff:
-.ruff_cache/
-
-# PyPI configuration file
-.pypirc
+# Finally, displaying a summary of the counts for halal and non-halal animals processed from the file.
+print("\nSummary:")
+print("Total Halal Animals: " + str(halal))  # Showing the total number of halal animals.
+print("Total Non-Halal Animals: " + str(nothalal))  # Showing the total number of non-halal animals.
